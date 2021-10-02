@@ -1,24 +1,15 @@
 package com.nandulabs.rest.webservices.helloworld;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 public class HelloWorldBean {
 
 	private String message;
-
-	public HelloWorldBean(String message) {
-		this.message = message;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	@Override
-	public String toString() {
-		return "HelloWorldBean [message=" + message + "]";
-	}
-
 }

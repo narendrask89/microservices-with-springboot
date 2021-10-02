@@ -1,7 +1,7 @@
 package com.nandulabs.rest.webservices.user;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,10 +13,10 @@ public class UserDaoService {
 	private static List<User> users = new ArrayList<>();
 
 	static {
-		users.add(new User(1, "Narendra", new Date()));
-		users.add(new User(2, "Santosh", new Date()));
-		users.add(new User(3, "Kumari", new Date()));
-		users.add(new User(4, "Gayathri", new Date()));
+		users.add(new User(1, "Narendra", LocalDate.now()));
+		users.add(new User(2, "Santosh", LocalDate.now()));
+		users.add(new User(3, "Kumari", LocalDate.now()));
+		users.add(new User(4, "Gayathri", LocalDate.now()));
 	}
 
 	public List<User> findAll() {

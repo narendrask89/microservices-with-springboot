@@ -1,5 +1,6 @@
 package com.nandulabs.rest.webservices.exception;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.http.HttpHeaders;
@@ -19,28 +20,27 @@ import com.nandulabs.rest.webservices.user.UserNotFoundException;
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
+	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
 
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+		ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDate.now(), ex.getMessage(),
 				request.getDescription(false));
 
 		return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(UserNotFoundException.class)
-	public final ResponseEntity<Object> handleAllException(UserNotFoundException ex, WebRequest request)
-			throws Exception {
+	public final ResponseEntity<Object> handleAllException(UserNotFoundException ex, WebRequest request) {
 
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+		ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDate.now(), ex.getMessage(),
 				request.getDescription(false));
 
 		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation Failed",
+		ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDate.now(), "Validation Failed",
 				ex.getBindingResult().toString());
 
 		return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
