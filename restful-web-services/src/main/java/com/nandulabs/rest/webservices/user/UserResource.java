@@ -52,7 +52,7 @@ public class UserResource {
 	}
 
 	@PostMapping("/users")
-	public ResponseEntity<?> createUser(@Valid @RequestBody User user) {
+	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
 		User savedUser = userDaoService.save(user);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())

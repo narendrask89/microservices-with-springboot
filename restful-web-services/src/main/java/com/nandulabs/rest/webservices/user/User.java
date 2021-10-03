@@ -27,8 +27,10 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	@Size(min = 2, message = "Name should have atleast 2 characters")
 	private String name;
+	
 	@Past
 	@JsonFormat(shape = Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate birthDate;
